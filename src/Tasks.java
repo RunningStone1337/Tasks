@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
@@ -58,7 +57,7 @@ public class Tasks {
         System.out.println("42. Выбранная фигура может двигаться в указанный квадрат - "+ chessmats("король", "f6","g6"));//42 task
         System.out.println("43. Введённое слово может быть завершено - "+ canbedone("kamru","karakum"));//43 task
         //System.out.println("44.  "+ ());//44 task
-        String[] strings = {"toy","boy","cow","bat"};
+        String[] strings = {"toy","boy","cow","bat", "sony","ponyaaa"};
         System.out.println("45. Слова, имеющие те же гласные, что и первое слово - "+ Arrays.toString(vowels(strings)));//45 task
         //System.out.println("46.  "+ ());//46 task
         //System.out.println("47.  "+ ());//47 task
@@ -396,19 +395,18 @@ public class Tasks {
     public static String zeros(String str)//28 task //string to char arr
     {
         int max=0, temp=0;
-        String ret ="";
+        StringBuilder ret = new StringBuilder();
         char[] mas= str.toCharArray();
-        for (int i=0; i<mas.length;i++)
-        {
-            if (mas[i]=='1') temp=0;
-            if (mas[i]=='0') temp++;
-            if (temp>max) max=temp;
+        for (char ma : mas) {
+            if (ma == '1') temp = 0;
+            if (ma == '0') temp++;
+            if (temp > max) max = temp;
         }
         for (int i=0; i<max;i++)
         {
-            ret+="0";
+            ret.append("0");
         }
-        return ret;
+        return ret.toString();
     }
     public static int issimple(int val)//29 task
     {
@@ -948,87 +946,110 @@ public class Tasks {
     //44 task
     public static String[] vowels(String[] arr)//45 task
     {
-        String[] res = new String[arr.length];
-        int vowels=0, tempvowels=0, reser=0;
+        int vowels = 0, tempvowels = 0, reser = 0;
         boolean[] bools = {false, false, false, false, false, false, false, false, false, false, false, false};
-        char[] dict ={'a','A','e','E','i','I','o','O','u','U','y','Y',};
-        char[][] arrch= new char[arr.length][];
-        for (int i = 0; i < arr.length; i++) {//для каждого слова в исходном массиве строк
-            arrch[i]=arr[i].toCharArray();
-        }
-        for (int k = 0; k < arrch[0].length; k++) {
-            switch (arrch[0][k]) {
-                case 'a': {
-                    bools[0] = true;
-                    break;
-                }
-                case 'A': {
-                    bools[1] = true;
-                    break;
-                }
-                case 'e': {
-                    bools[2] = true;
-                    break;
-                }
-                case 'E': {
-                    bools[3] = true;
-                    break;
-                }
-                case 'i': {
-                    bools[4] = true;
-                    break;
-                }
-                case 'I': {
-                    bools[5] = true;
-                    break;
-                }
-                case 'o': {
-                    bools[6] = true;
-                    break;
-                }
-                case 'O': {
-                    bools[7] = true;
-                    break;
-                }
-                case 'u': {
-                    bools[8] = true;
-                    break;
-                }
-                case 'U': {
-                    bools[9] = true;
-                    break;
-                }
-                case 'y': {
-                    bools[10] = true;
-                    break;
-                }
-                case 'Y': {
-                    bools[11] = true;
-                    break;
-                }
+        int[] intbols ={0,0,0,0,0,0,0,0,0,0,0,0};
+        char[] dict = {'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U', 'y', 'Y',};
+        char[][] arrch = new char[arr.length][];
+        String[] temp = new String[arr.length];
+        {
+            for (int i = 0; i < arr.length; i++) {//для каждого слова в исходном массиве строк
+                arrch[i] = arr[i].toCharArray();
             }
-        }
-        for (int i = 0; i < bools.length; i++) {
-            if (bools[i]==true) vowels++;
-        }
-        for (int i = 0; i < arrch.length; i++) {//слова
-            for (int j = 0; j < arrch[i].length; j++)//буквы
-            {
-                for (int k = 0; k < bools.length; k++) {//проверенные буквы словаря
-                    if (arrch[i][j]==dict[k]&&bools[k]==true)
-                    {
-                        tempvowels++;
-                        continue;
+            for (int k = 0; k < arrch[0].length; k++) {
+                switch (arrch[0][k]) {
+                    case 'a': {
+                        bools[0] = true;
+                        intbols[0]++;
+                        break;
+                    }
+                    case 'A': {
+                        bools[1] = true;
+                        intbols[1]++;
+                        break;
+                    }
+                    case 'e': {
+                        bools[2] = true;
+                        intbols[2]++;
+                        break;
+                    }
+                    case 'E': {
+                        bools[3] = true;
+                        intbols[3]++;
+                        break;
+                    }
+                    case 'i': {
+                        bools[4] = true;
+                        intbols[4]++;
+                        break;
+                    }
+                    case 'I': {
+                        bools[5] = true;
+                        intbols[5]++;
+                        break;
+                    }
+                    case 'o': {
+                        bools[6] = true;
+                        intbols[6]++;
+                        break;
+                    }
+                    case 'O': {
+                        bools[7] = true;
+                        intbols[7]++;
+                        break;
+                    }
+                    case 'u': {
+                        bools[8] = true;
+                        intbols[8]++;
+                        break;
+                    }
+                    case 'U': {
+                        bools[9] = true;
+                        intbols[9]++;
+                        break;
+                    }
+                    case 'y': {
+                        bools[10] = true;
+
+                        intbols[10]++;
+                        break;
+                    }
+                    case 'Y': {
+                        bools[11] = true;
+                        intbols[11]++;
+                        break;
                     }
                 }
-                if (vowels==tempvowels)
+            }
+            for (int i = 0; i < bools.length; i++) {
+                if (bools[i] == true) vowels++;
+            }
+            for (int i = 0; i < arrch.length; i++) {//слова
+                for (int j = 0; j < arrch[i].length; j++)//буквы
                 {
-                    res[reser]=Character.toString(arrch[i][j]);
+                    for (int k = 0; k < bools.length; k++) {//проверенные буквы словаря
+                        if (arrch[i][j] == dict[k] && bools[k] == true && intbols[k]==1) {//если символ есть в первом слове и он один
+                            tempvowels++;
+                            break;
+                        }
+                        if (arrch[i][j] == dict[k] && bools[k] == false) {
+                            tempvowels++;
+                            break;
+                        }
+                    }
+                }
+                if (vowels == tempvowels) {
+                    temp[reser] = arr[i];
                     reser++;
                 }
-                tempvowels=0;
+                tempvowels = 0;
             }
+        }
+        String[] res = new String[reser];
+        for (int i = 0; i < reser; i++) {
+            res[i]=temp[i];
         }
         return res;
     }
 }
+
