@@ -57,9 +57,9 @@ public class Tasks {
         System.out.println("42. Выбранная фигура может двигаться в указанный квадрат - "+ chessmats("король", "f6","g6"));//42 task
         System.out.println("43. Введённое слово может быть завершено - "+ canbedone("kamru","karakum"));//43 task
         //System.out.println("44.  "+ ());//44 task
-        String[] strings = {"toy","boy","cow","bat", "sony","ponyaaa"};
+        String[] strings = {"toy","boy","cow","bat", "sony","ponyyyy"};
         System.out.println("45. Слова, имеющие те же гласные, что и первое слово - "+ Arrays.toString(vowels(strings)));//45 task
-        //System.out.println("46.  "+ ());//46 task
+        System.out.println("46. Введённое число является банковской картой - "+ cardvalid("012345678901234"));//46 task
         //System.out.println("47.  "+ ());//47 task
         //System.out.println("48.  "+ ());//48 task
         //System.out.println("49.  "+ ());//49 task
@@ -946,9 +946,9 @@ public class Tasks {
     //44 task
     public static String[] vowels(String[] arr)//45 task
     {
-        int vowels = 0, tempvowels = 0, reser = 0;
+        int reser = 0;
         boolean[] bools = {false, false, false, false, false, false, false, false, false, false, false, false};
-        int[] intbols ={0,0,0,0,0,0,0,0,0,0,0,0};
+        boolean[] boolstemp = {false, false, false, false, false, false, false, false, false, false, false, false};
         char[] dict = {'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U', 'y', 'Y',};
         char[][] arrch = new char[arr.length][];
         String[] temp = new String[arr.length];
@@ -960,89 +960,77 @@ public class Tasks {
                 switch (arrch[0][k]) {
                     case 'a': {
                         bools[0] = true;
-                        intbols[0]++;
                         break;
                     }
                     case 'A': {
                         bools[1] = true;
-                        intbols[1]++;
                         break;
                     }
                     case 'e': {
                         bools[2] = true;
-                        intbols[2]++;
                         break;
                     }
                     case 'E': {
                         bools[3] = true;
-                        intbols[3]++;
                         break;
                     }
                     case 'i': {
                         bools[4] = true;
-                        intbols[4]++;
                         break;
                     }
                     case 'I': {
                         bools[5] = true;
-                        intbols[5]++;
                         break;
                     }
                     case 'o': {
                         bools[6] = true;
-                        intbols[6]++;
                         break;
                     }
                     case 'O': {
                         bools[7] = true;
-                        intbols[7]++;
                         break;
                     }
                     case 'u': {
                         bools[8] = true;
-                        intbols[8]++;
                         break;
                     }
                     case 'U': {
                         bools[9] = true;
-                        intbols[9]++;
                         break;
                     }
                     case 'y': {
                         bools[10] = true;
-
-                        intbols[10]++;
                         break;
                     }
                     case 'Y': {
                         bools[11] = true;
-                        intbols[11]++;
                         break;
                     }
                 }
-            }
-            for (int i = 0; i < bools.length; i++) {
-                if (bools[i] == true) vowels++;
             }
             for (int i = 0; i < arrch.length; i++) {//слова
                 for (int j = 0; j < arrch[i].length; j++)//буквы
                 {
                     for (int k = 0; k < bools.length; k++) {//проверенные буквы словаря
-                        if (arrch[i][j] == dict[k] && bools[k] == true && intbols[k]==1) {//если символ есть в первом слове и он один
-                            tempvowels++;
-                            break;
-                        }
-                        if (arrch[i][j] == dict[k] && bools[k] == false) {
-                            tempvowels++;
+                        if (arrch[i][j] == dict[k]) {
+                            boolstemp[k]=true;
                             break;
                         }
                     }
                 }
-                if (vowels == tempvowels) {
-                    temp[reser] = arr[i];
-                    reser++;
+                for (int j = 0; j < bools.length; j++) {
+                    if (bools[j] != boolstemp[j]) {
+                        break;
+                    }
+                    if (j==bools.length-1)
+                    {
+                        temp[reser] = arr[i];
+                        reser++;
+                    }
                 }
-                tempvowels = 0;
+                for (int j = 0; j < 12; j++) {
+                    boolstemp[j] = false;
+                }
             }
         }
         String[] res = new String[reser];
@@ -1050,6 +1038,40 @@ public class Tasks {
             res[i]=temp[i];
         }
         return res;
+    }
+    public static boolean cardvalid(String val){
+        char[] charsval = val.toCharArray();
+        int temp=0;
+        if (charsval.length<14 ||charsval.length>19)
+        {
+            return false;
+        }
+        for (int i = 0; i < charsval.length; i++) {
+            if (!Character.isDigit(charsval[i]))
+            {
+                return false;
+            }
+        }
+        char[] inverse = new char[charsval.length-1];
+        for (int i = inverse.length-1, k=0; i >=0 ; i--,k++) {
+            inverse[k]=charsval[i];
+        }
+        for (int i = 0; i < inverse.length; i+=2) {
+            temp=Character.getNumericValue(inverse[i]);
+            temp*=2;
+            if (temp%100>9)
+            {
+                char[] couple = Character.toChars(temp);
+                temp=Character.getNumericValue(couple[0])+Character.getNumericValue(couple[1]);
+            }
+            inverse[i]=temp;
+        }
+        int sum =0;
+        for (int i = 0; i < inverse.length; i++) {
+            sum+=(int)inverse[i];
+        }
+
+        return (10-(sum%10)==charsval[charsval.length]);
     }
 }
 
