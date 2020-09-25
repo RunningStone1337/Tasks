@@ -59,8 +59,9 @@ public class Tasks {
         //System.out.println("44.  "+ ());//44 task
         String[] strings = {"toy","boy","cow","bat", "sony","ponyyyy"};
         System.out.println("45. Слова, имеющие те же гласные, что и первое слово - "+ Arrays.toString(vowels(strings)));//45 task
-        System.out.println("46. Введённое число является банковской картой - "+ cardvalid("012345678901234"));//46 task
-        //System.out.println("47.  "+ ());//47 task
+        System.out.println("46. Введённое число является банковской картой - "+ cardvalid("1234567890123452"));//46 task
+        System.out.println("47. Введённое число по-английски - "+ numtoword(1));//47 task
+        System.out.println("47. Введённое число по-русски - "+ numtowordr(113));//47 task
         //System.out.println("48.  "+ ());//48 task
         //System.out.println("49.  "+ ());//49 task
     }
@@ -1039,7 +1040,8 @@ public class Tasks {
         }
         return res;
     }
-    public static boolean cardvalid(String val){
+    public static boolean cardvalid(String val)//46 task
+    {
         char[] charsval = val.toCharArray();
         int temp=0;
         if (charsval.length<14 ||charsval.length>19)
@@ -1061,17 +1063,362 @@ public class Tasks {
             temp*=2;
             if (temp%100>9)
             {
-                char[] couple = Character.toChars(temp);
-                temp=Character.getNumericValue(couple[0])+Character.getNumericValue(couple[1]);
+                temp=temp%10+1;
             }
-            inverse[i]=temp;
+            inverse[i]=Character.forDigit(temp, 10);
         }
         int sum =0;
         for (int i = 0; i < inverse.length; i++) {
-            sum+=(int)inverse[i];
+            sum+=Character.getNumericValue(inverse[i]);
         }
-
-        return (10-(sum%10)==charsval[charsval.length]);
+        return (10-(sum%10)==Character.getNumericValue(charsval[charsval.length-1]));
     }
+    public static String numtoword(int val)//47 task
+    {
+        if (val>999||val<0) {
+            return "incorrect value";
+        }
+        int first=val/100, second=(val/10)%10, third=val%10;
+        String str = Integer.toString(val), res ="";
+        int len = str.length();
+        switch (len) {
+            case 1:
+                switch (val){
+                    case 0: return "zero";
+                    case 1: return "one";
+                    case 2: return "two";
+                    case 3: return "three";
+                    case 4: return "four";
+                    case 5: return "five";
+                    case 6: return "six";
+                    case 7: return "seven";
+                    case 8: return "eight";
+                    case 9: return "nine";
+                }
+            case 2:
+                switch (val){
+                    case 10: return "ten";
+                    case 11: return "eleven";
+                    case 12: return "twelve";
+                    case 13: return "thirteen";
+                    case 14: return "fourteen";
+                    case 15: return "fifteen";
+                    case 16: return "sixteen";
+                    case 17: return "seventeen";
+                    case 18: return "eighteen";
+                    case 19: return "nineteen";
+                    case 20: return "twenty";
+                }
+                switch (second) {
+                    case 2: res+="twenty ";
+                    break;
+                    case 3: res+="thirty ";
+                        break;
+                    case 4: res+="forty ";
+                        break;
+                    case 5: res+="fifty ";
+                        break;
+                    case 6: res+="sixty ";
+                        break;
+                    case 7: res+="seventy ";
+                    break;
+                    case 8: res+="eighty ";
+                        break;
+                    case 9: res+="ninety ";
+                        break;
+                }
+                switch (third){
+                    case 1: res+="one";
+                    break;
+                    case 2: res+="two";
+                    break;
+                    case 3: res+="three";
+                    break;
+                    case 4: res+="four";
+                    break;
+                    case 5: res+="five";
+                    break;
+                    case 6: res+="six";
+                    break;
+                    case 7: res+="seven";
+                    break;
+                    case 8: res+="eight";
+                    break;
+                    case 9: res+="nine";
+                    break;
+            }
+            break;
+            case 3:
+                switch (first){
+                    case 1: res+= "one hundred ";
+                    break;
+                    case 2: res+= "two hundred ";
+                        break;
+                    case 3: res+= "three hundred ";
+                        break;
+                    case 4: res+= "four hundred ";
+                        break;
+                    case 5: res+= "five hundred ";
+                        break;
+                    case 6: res+= "six hundred ";
+                        break;
+                    case 7: res+= "seven hundred ";
+                        break;
+                    case 8: res+= "eight hundred ";
+                        break;
+                    case 9: res+= "nine hundred ";
+                        break;
+                }
+                switch (second) {
+                    case 1: switch (val%100){
+                            case 10: res+="ten";
+                                break;
+                            case 11: res+="eleven";
+                                break;
+                            case 12: res+="twelve";
+                                break;
+                            case 13: res+="thirteen";
+                                break;
+                            case 14: res+="fourteen";
+                                break;
+                            case 15: res+="fifteen";
+                                break;
+                            case 16: res+="sixteen";
+                                break;
+                            case 17: res+="seventeen";
+                                break;
+                            case 18: res+="eighteen";
+                                break;
+                            case 19: res+="nineteen";
+                                break;
+                            case 20: res+="twenty";
+                                break;
+                    }
+                    break;
+                    case 2: res+="twenty ";
+                        break;
+                    case 3: res+="thirty ";
+                        break;
+                    case 4: res+="forty ";
+                        break;
+                    case 5: res+="fifty ";
+                        break;
+                    case 6: res+="sixty ";
+                        break;
+                    case 7: res+="seventy ";
+                        break;
+                    case 8: res+="eighty ";
+                        break;
+                    case 9: res+="ninety ";
+                        break;
+                }
+                if (second!=1) {
+                    switch (third) {
+                        case 1:
+                            res += "one";
+                            break;
+                        case 2:
+                            res += "two";
+                            break;
+                        case 3:
+                            res += "three";
+                            break;
+                        case 4:
+                            res += "four";
+                            break;
+                        case 5:
+                            res += "five";
+                            break;
+                        case 6:
+                            res += "six";
+                            break;
+                        case 7:
+                            res += "seven";
+                            break;
+                        case 8:
+                            res += "eight";
+                            break;
+                        case 9:
+                            res += "nine";
+                            break;
+                    }
+                }
+        }
+        return res;
+    }
+    public static String numtowordr(int val)//47 task
+    {
+        if (val>999||val<0) {
+            return "неверное значение";
+        }
+        int first=val/100, second=(val/10)%10, third=val%10;
+        String str = Integer.toString(val), res ="";
+        int len = str.length();
+        switch (len) {
+            case 1:
+                switch (val){
+                    case 0: return "ноль";
+                    case 1: return "один";
+                    case 2: return "два";
+                    case 3: return "три";
+                    case 4: return "четыре";
+                    case 5: return "пять";
+                    case 6: return "шесть";
+                    case 7: return "семь";
+                    case 8: return "восемь";
+                    case 9: return "девять";
+                }
+            case 2:
+                switch (val){
+                    case 10: return "десять";
+                    case 11: return "одиннадцать";
+                    case 12: return "двенадцать";
+                    case 13: return "тринадцать";
+                    case 14: return "четырнадцать";
+                    case 15: return "пятнадцать";
+                    case 16: return "шестнадцать";
+                    case 17: return "семнадцать";
+                    case 18: return "восемнадцать";
+                    case 19: return "девятнадцать";
+                    case 20: return "двадцать";
+                }
+                switch (second) {
+                    case 2: res+="двадцать ";
+                        break;
+                    case 3: res+="тридцать ";
+                        break;
+                    case 4: res+="сорок ";
+                        break;
+                    case 5: res+="пятьдесят ";
+                        break;
+                    case 6: res+="шестьдесят ";
+                        break;
+                    case 7: res+="семьдесят ";
+                        break;
+                    case 8: res+="восемьдесят ";
+                        break;
+                    case 9: res+="девяносто ";
+                        break;
+                }
+                switch (third){
+                    case 1: res+="один";
+                        break;
+                    case 2: res+="два";
+                        break;
+                    case 3: res+="три";
+                        break;
+                    case 4: res+="четыре";
+                        break;
+                    case 5: res+="пять";
+                        break;
+                    case 6: res+="шесть";
+                        break;
+                    case 7: res+="семь";
+                        break;
+                    case 8: res+="восемь";
+                        break;
+                    case 9: res+="девять";
+                        break;
+                }
+                break;
+            case 3:
+                switch (first){
+                    case 1: res+= "сто ";
+                        break;
+                    case 2: res+= "двести ";
+                        break;
+                    case 3: res+= "триста ";
+                        break;
+                    case 4: res+= "четыреста ";
+                        break;
+                    case 5: res+= "пятсот ";
+                        break;
+                    case 6: res+= "шестьсот ";
+                        break;
+                    case 7: res+= "семьсот ";
+                        break;
+                    case 8: res+= "восемьсот ";
+                        break;
+                    case 9: res+= "девятьсот ";
+                        break;
+                }
+                switch (second) {
+                    case 1: switch (val%100){
+                        case 10: res+="десять";
+                            break;
+                        case 11: res+="одиннадцать";
+                            break;
+                        case 12: res+="двенадцать";
+                            break;
+                        case 13: res+="тринадцать";
+                            break;
+                        case 14: res+="четырнадцать";
+                            break;
+                        case 15: res+="пятнадцать";
+                            break;
+                        case 16: res+="шестнадцать";
+                            break;
+                        case 17: res+="семнадцать";
+                            break;
+                        case 18: res+="восемнадцать";
+                            break;
+                        case 19: res+="девятнадцать";
+                            break;
+                        case 20: res+="двадцать";
+                            break;
+                    }
+                        break;
+                    case 2: res+="двадцать ";
+                        break;
+                    case 3: res+="тридцать ";
+                        break;
+                    case 4: res+="сорок ";
+                        break;
+                    case 5: res+="пятьдесят ";
+                        break;
+                    case 6: res+="шестьдесят ";
+                        break;
+                    case 7: res+="семьдесят ";
+                        break;
+                    case 8: res+="восемьдесят ";
+                        break;
+                    case 9: res+="девяносто ";
+                        break;
+                }
+                if (second!=1) {
+                    switch (third) {
+                        case 1:
+                            res += "один";
+                            break;
+                        case 2:
+                            res += "два";
+                            break;
+                        case 3:
+                            res += "три";
+                            break;
+                        case 4:
+                            res += "четыре";
+                            break;
+                        case 5:
+                            res += "пять";
+                            break;
+                        case 6:
+                            res += "шесть";
+                            break;
+                        case 7:
+                            res += "семь";
+                            break;
+                        case 8:
+                            res += "восемь";
+                            break;
+                        case 9:
+                            res += "девять";
+                            break;
+                    }
+                }
+        }
+        return res;
+    }
+    //public static String numtowordr(int val)//47 task
 }
 
