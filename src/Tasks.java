@@ -60,8 +60,8 @@ public class Tasks {
         String[] strings = {"toy","boy","cow","bat", "sony","ponyyyy"};
         System.out.println("45. Слова, имеющие те же гласные, что и первое слово - "+ Arrays.toString(vowels(strings)));//45 task
         System.out.println("46. Введённое число является банковской картой - "+ cardvalid("1234567890123452"));//46 task
-        System.out.println("47. Введённое число по-английски - "+ numtoword(1));//47 task
-        System.out.println("47. Введённое число по-русски - "+ numtowordr(113));//47 task
+        System.out.println("47. Введённое число по-английски - "+ numtoword(666));//47 task
+        System.out.println("47. Введённое число по-русски - "+ numtowordr(666));//47 task
         //System.out.println("48.  "+ ());//48 task
         //System.out.println("49.  "+ ());//49 task
     }
