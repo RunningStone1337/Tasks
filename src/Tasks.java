@@ -66,7 +66,8 @@ public class Tasks {
         System.out.println("49. Исправленная строка будет иметь вид "+ correcttitle("it IS weDnEsDaY, my dudES!"));//49 task
         System.out.println("50. Многоcтрочная прямоугольная строка для заданного \"шестиугольного\" числа - "+ hexnums(37+24+30));//50 task
         //System.out.println("51. Число Белла для введённого массива - "+ bell());//51 task
-        System.out.println("52. Слово на свинском латинском - "+ pigword("ayrstg"));//52 task
+        System.out.println("52. Слово на свинском латинском - "+ pigword("weather"));//52 task
+        System.out.println("52. Предложение на свинском латинском - "+ pigoffer("it is wednesday, my dudes!"));//52 task
         //System.out.println("53. "+ ());//53 task
         //System.out.println("54. "+ ());//54 task
         //System.out.println("55. "+ ());//55 task
@@ -1511,19 +1512,43 @@ public class Tasks {
     public static String pigword(String str)//52 task
     {
         char[] arr = str.toCharArray();
-        String res=str;
-        for (int i = 0; i < arr.length; i++) {
             if (str.matches("^(?i:[aeiouy]).*"))//если буква гласная
             {
-                res+="yay";
-                return res;
+                return str+ "yay";
             }
             else
             {
-
+                StringBuilder temp = new StringBuilder(str);
+                while ((temp.charAt(0)!='a')&(temp.charAt(0)!='A')&(temp.charAt(0)!='e')&(temp.charAt(0)!='E')&(temp.charAt(0)!='i')&(temp.charAt(0)!='I')&(temp.charAt(0)!='o')&(temp.charAt(0)!='O')&(temp.charAt(0)!='u')&(temp.charAt(0)!='U')&(temp.charAt(0)!='y')&(temp.charAt(0)!='Y'))
+                {
+                    temp = temp.insert(arr.length, temp.charAt(0));
+                    temp= temp.deleteCharAt(0);
+                }
+                return temp +"ay";
+            }
+    }
+    public static String pigoffer(String str)//52 task
+    {
+        String temp ="", res="";
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isAlphabetic(str.charAt(i)))
+            {
+                temp+=str.charAt(i);
+            }
+            else
+            {
+                if (temp.length()!=0) {
+                    res += pigword(temp) + str.charAt(i);
+                    temp = "";
+                }
+                else
+                {
+                    res += str.charAt(i);
+                    temp = "";
+                }
             }
         }
-        return res;
+        return  res;
     }
 }
 
