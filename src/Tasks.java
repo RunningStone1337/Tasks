@@ -63,7 +63,18 @@ public class Tasks {
         System.out.println("47. Введённое число по-английски - "+ numtoword(666));//47 task
         System.out.println("47. Введённое число по-русски - "+ numtowordr(666));//47 task
         //System.out.println("48.  "+ ());//48 task
-        //System.out.println("49.  "+ ());//49 task
+        System.out.println("49. Исправленная строка будет иметь вид "+ correcttitle("it IS weDnEsDaY, my dudES!"));//49 task
+        System.out.println("50. Многоcтрочная прямоугольная строка для заданного \"шестиугольного\" числа - "+ hexnums(37+24+30));//50 task
+        //System.out.println("51. Число Белла для введённого массива - "+ bell());//51 task
+        System.out.println("52. Слово на свинском латинском - "+ pigword("ayrstg"));//52 task
+        //System.out.println("53. "+ ());//53 task
+        //System.out.println("54. "+ ());//54 task
+        //System.out.println("55. "+ ());//55 task
+        //System.out.println("56. "+ ());//56 task
+        //System.out.println("57. "+ ());//57 task
+        //System.out.println("58. "+ ());//58 task
+        //System.out.println("59. "+ ());//59 task
+        //System.out.println("60. "+ ());//60 task
     }
     public static double remainder(double a, double b) //1 task
     {
@@ -1419,6 +1430,100 @@ public class Tasks {
         }
         return res;
     }
-    //public static String numtowordr(int val)//47 task
+    //48 task
+    public static String correcttitle(String str)//49 task
+    {
+        char[] arr =str.toCharArray();
+        String temp_str ="", res="";
+        for (int i = 0; i < arr.length; i++) {
+            if (Character.isAlphabetic(arr[i]))
+            {
+                temp_str+=arr[i];
+            }
+            else
+            {
+                char[] temp_arr = temp_str.toCharArray();
+                for (int j = 0; j < temp_arr.length; j++) {
+                    temp_arr[j] = Character.toLowerCase(temp_arr[j]);
+                }
+                temp_str = String.valueOf(temp_arr);
+                if (temp_str.equals("and")||temp_str.equals("the")||temp_str.equals("of")||temp_str.equals("in"))
+                {
+                    res+=temp_str+arr[i];
+                }
+                else
+                {
+                    if (temp_str.length()!=0) {
+                        temp_arr[0] = Character.toUpperCase(temp_arr[0]);
+                        temp_str = String.valueOf(temp_arr);
+                        res += temp_str + arr[i];
+                    }
+                    else
+                    {
+                        res += temp_str + arr[i];
+                    }
+                }
+                temp_str="";
+            }
+        }
+        return res;
+    }
+    public static String hexnums(int val)//50 task
+    {
+        String res= "недопустимое число";
+        int start =1, mult=1, r=1, os=0, probs=0;
+        while (start<=val)
+        {
+            if (start==val)
+            {
+                res="\n";
+                for (int i = 0; i < r; i++) {
+                    probs=r-i;
+                    os=r+i;
+                    for (int j = 0; j < probs; j++) {
+                        res+=" ";
+                    }
+                    for (int j = 0; j < os; j++) {
+                        res+="o ";
+                    }
+                    res+="\n";
+                }
+                for (int i = 0; i < r-1; i++) {
+                    probs++;
+                    os--;
+                    for (int j = 0; j < probs; j++) {
+                        res+=" ";
+                    }
+                    for (int j = 0; j < os; j++) {
+                        res+="o ";
+                    }
+                    res+="\n";
+                }
+                return res;
+            }
+            start+=6*mult;
+            mult++;
+            r++;
+        }
+        return res;
+    }
+    //51 task
+    public static String pigword(String str)//52 task
+    {
+        char[] arr = str.toCharArray();
+        String res=str;
+        for (int i = 0; i < arr.length; i++) {
+            if (str.matches("^(?i:[aeiouy]).*"))//если буква гласная
+            {
+                res+="yay";
+                return res;
+            }
+            else
+            {
+
+            }
+        }
+        return res;
+    }
 }
 
