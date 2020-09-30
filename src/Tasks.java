@@ -56,7 +56,8 @@ public class Tasks {
         System.out.println("41. Зашифрованное послание будет иметь вид - "+ Arrays.toString(encrypt("i’ll have two number 9s, a number 9 large, a number 6 with extra dip, a number 7, two number 45s, one with cheese, and a la-a-a-rge soda."))+", а расшифрованное - "+ decrypt(arr));//41 task
         System.out.println("42. Выбранная фигура может двигаться в указанный квадрат - "+ chessmats("король", "f6","g6"));//42 task
         System.out.println("43. Введённое слово может быть завершено - "+ canbedone("kamru","karakum"));//43 task
-        //System.out.println("44.  "+ ());//44 task
+        int[] intarr ={36, 5, 71, 7438, 1, 9};
+        System.out.println("44. Число, возвращаемое функцией сложения и умножения чисел - "+ summult(intarr));//44 task
         String[] strings = {"toy","boy","cow","bat", "sony","ponyyyy"};
         System.out.println("45. Слова, имеющие те же гласные, что и первое слово - "+ Arrays.toString(vowels(strings)));//45 task
         System.out.println("46. Введённое число является банковской картой - "+ cardvalid("1234567890123452"));//46 task
@@ -68,7 +69,7 @@ public class Tasks {
         //System.out.println("51. Число Белла для введённого массива - "+ bell());//51 task
         System.out.println("52. Слово на свинском латинском - "+ pigword("weather"));//52 task
         System.out.println("52. Предложение на свинском латинском - "+ pigoffer("it is wednesday, my dudes!"));//52 task
-        //System.out.println("53. "+ ());//53 task
+        System.out.println("53. Введённая строка является допустимым RGB значением"+ rgb(("rgb(0,0,0)"));//53 task
         //System.out.println("54. "+ ());//54 task
         //System.out.println("55. "+ ());//55 task
         //System.out.println("56. "+ ());//56 task
@@ -956,7 +957,24 @@ public class Tasks {
             return false;
         }
     }
-    //44 task
+    public static int   summult(int[] arr)//44 task
+    {
+        int sum =0,mult=1;
+        String str ="";
+        for (int i = 0; i < arr.length; i++) {
+            sum+=arr[i];
+        }
+        str = Integer.toString(sum);
+        while (str.length()!=1)
+        {
+            for (int i = 0; i < str.length(); i++) {
+                mult*=Character.getNumericValue(str.charAt(i));
+            }
+            str = Integer.toString(mult);
+        }
+        return sum;
+
+    }
     public static String[] vowels(String[] arr)//45 task
     {
         int reser = 0;
@@ -1549,6 +1567,11 @@ public class Tasks {
             }
         }
         return  res;
+    }
+    public static boolean rgb(String str)//53 task
+    {
+        StringBuilder strb = new StringBuilder(str);
+        if (str.equals())
     }
 }
 
