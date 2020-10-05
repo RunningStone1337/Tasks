@@ -69,7 +69,7 @@ public class Tasks {
         //System.out.println("51. Число Белла для введённого массива - "+ bell());//51 task
         System.out.println("52. Слово на свинском латинском - "+ pigword("weather"));//52 task
         System.out.println("52. Предложение на свинском латинском - "+ pigoffer("it is wednesday, my dudes!"));//52 task
-        System.out.println("53. Введённая строка является допустимым RGB значением"+ rgb(("rgb(0,0,0)"));//53 task
+        System.out.println("53. Введённая строка является допустимым RGB значением - "+ rgb(("rgba(0,6,0, 12)")));//53 task
         //System.out.println("54. "+ ());//54 task
         //System.out.println("55. "+ ());//55 task
         //System.out.println("56. "+ ());//56 task
@@ -1570,8 +1570,65 @@ public class Tasks {
     }
     public static boolean rgb(String str)//53 task
     {
-        StringBuilder strb = new StringBuilder(str);
-        if (str.equals())
+        String temp = "";
+        int i = 0;
+        for (; i < 4; i++) {
+            temp+=str.charAt(i);
+        }
+        if (temp.equals("rgb(")||temp.equals("RGB("))
+        {
+            temp="";
+            while (str.charAt(i)!=')')
+            {
+                temp+=str.charAt(i);
+                i++;
+            }
+            if (i!=str.length()-1) return false;
+            i=0;
+            for (int j = 0; j < 2; j++) {
+                String temp_val ="";
+                while (temp.charAt(i)!=',')
+                {
+                    temp_val+=temp.charAt(i);
+                    i++;
+                }
+                i++;
+                double val = Double.parseDouble(temp_val);
+                if (val<0||val>255)
+                    return false;
+            }
+            return true;
+        }
+        temp+=str.charAt(i);
+        i++;
+        if (temp.equals("rgba(")||temp.equals("RGBA("))
+        {
+            temp="";
+            while (str.charAt(i)!=')')
+            {
+                temp+=str.charAt(i);
+                i++;
+            }
+            if (i!=str.length()-1) return false;
+            i=0;
+            for (int j = 0; j < 3; j++) {
+                String temp_val ="";
+                while (temp.charAt(i)!=',')
+                {
+                    temp_val+=temp.charAt(i);
+                    i++;
+                }
+                i++;
+                double val = Double.parseDouble(temp_val);
+                if (val<0||val>255)
+                    return false;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 
