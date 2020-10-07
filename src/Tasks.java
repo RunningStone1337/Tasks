@@ -70,7 +70,7 @@ public class Tasks {
         System.out.println("52. Слово на свинском латинском - "+ pigword("weather"));//52 task
         System.out.println("52. Предложение на свинском латинском - "+ pigoffer("it is wednesday, my dudes!"));//52 task
         System.out.println("53. Введённая строка является допустимым RGB значением - "+ rgb(("rgba(0,6,0, 12)")));//53 task
-        //System.out.println("54. "+ ());//54 task
+        System.out.println("54. Возвращённый URL - "+ url("https://edabit.com?a=1&b=2&a=2"));//54 task
         //System.out.println("55. "+ ());//55 task
         //System.out.println("56. "+ ());//56 task
         //System.out.println("57. "+ ());//57 task
@@ -1630,5 +1630,90 @@ public class Tasks {
             return false;
         }
     }
+    public static String url(String str, String[] ... params)//54 task
+    {
+        String temp ="", res="";
+        int i = 0;
+        for (; i < 8; i++) {
+            temp+=str.charAt(i);
+            res+=str.charAt(i);
+        }
+        if (!temp.equals("https://"))
+        {
+            return "не является URL";
+        }
+        else
+        {
+            while (str.charAt(i)!='.')
+            {
+                res+=str.charAt(i);
+                i++;
+            }
+            temp ="";
+            res+=str.charAt(i);
+            i++;
+            for (int j = 0; j < 3; j++, i++) {
+                temp+=str.charAt(i);
+                res+=str.charAt(i);
+            }
+            if (temp.equals("com")&&i==str.length())//если параметров нет
+            {
+                return res;
+            }
+            temp+=str.charAt(i);
+            res+=str.charAt(i);
+            ++i;
+            if (temp.equals("com?")&&i!=str.length()-1)//если должны быть параметры и они есть
+            {
+                int ques =0, equs=0, chars=0;
+                for (int j=i; j < str.length(); j++) {
+                    if (Character.isAlphabetic(str.charAt(j))) chars++;
+                    if (str.charAt(j)=='='&&Character.isDigit(str.charAt(j+1))) equs++;
+                    if (str.charAt(j)=='&') ques++;
+                }
+                if (ques+1==equs&&equs==chars)//если введено корректно
+                {
+                    String part = str.substring(i);
+                    String[] words = part.split("&");
+                    String[] names = new String[words.length];
+                    String[] vals_str = new String[words.length];
+                    for (int j = 0, k=0; j < words.length; j++) {
+                        names[j]="";
+                        vals_str[j]="";
+                        while (words[j].charAt(k)!='=')//запись названий переменных
+                        {
+                            names[j]+=words[j].charAt(k);
+                            k++;
+                        }
+                        k++;
+                        while (k!=words[j].length())//запись значений переменных
+                        {
+                            vals_str[j]+=words[j].charAt(k);
+                            k++;
+                        }
+                        k=0;
+                    }
+                    for (int word1 = 0; word1 < words.length; word1++) {//сравнение всех переменных по имени
+                        for (int m = word1; m < words.length; m++) {
+                            if (names[word1].equals(names[word1+1]))
+                            {
+                                res+=names[word1]+"="+vals_str[word1+1];
+                            }
+                        }
+                    }
+                }
+            }
+            else//если должны быть параметры и их нет
+            {
+                return "не является URL";
+            }
+        }
+        return "1";
+    }
+   /* public static String[] tags(String str)//55 task
+    {
+        String lower_case = str.toLowerCase();
+        lower_case = lower_case.replaceAll("\\p{Punct}","");
+    }*/
 }
 
