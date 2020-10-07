@@ -1698,7 +1698,7 @@ public class Tasks {
                             if (names[word1].equals(names[word1+1]))
                             {
                                 res+=names[word1]+"="+vals_str[word1+1];
-                            }
+                            };
                         }
                     }
                 }
