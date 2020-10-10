@@ -1,83 +1,8 @@
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Vector;
 
 public class Tasks {
-    public static void main(String[] args) {
-        System.out.println("1. Остаток от деления равен " + remainder(141, 9));//1 task
-        System.out.println("2. Площадь заданного треугольника равна  " +area(2, 9));//2 task
-        System.out.println("3. Общее число ног в хозяйстве фермера равно " + legs(5, 1, 4));//3 task
-        System.out.println("4. Ставка может быть прибыльной - " + profit(0.9, 5, 1));//4 task
-        System.out.println("5. Требуемая операция для получения числа - " + operations(60, 5, 12));//5 task
-        System.out.println("6. Код введённого символа в таблице - " + asci('*'));//6 task
-        System.out.println("7. Сумма чисел заданного ряда - " + summary(7));//7 task
-        System.out.println("8. Максимальная длина третьей стороны треугольника - " + maxthird(17, 8));//8 task
-        int[] Arr = {1, 2, 7};
-        System.out.println("9. Сумма кубов чисел массива - " + sumofcubes(Arr));//9 task
-        System.out.println("10. Сумма a по b раз + a делится без остатка на c - " + abcmath(3, 3, 5));//10 task
-        String str = "MILF-man I love frogs";
-        System.out.println("11. Преобразованная строка '"+str+"' будет иметь вид " + multychars(str, 3));//11 task
-        int[] NewArr = {12, 51, 8, 44};
-        System.out.println("12. Разница между наибольшим и наименьшим числами массива будет равна " + massdiff(NewArr));//12 task
-        int[] DivArr = {12, 5, 8, 48, 7};
-        System.out.println("13. Среднее значение элементов массива является целым числом - " + massdiv(DivArr));//13 task
-        int[] CumArr = {12, -3, 4, 8};
-        System.out.println("14. Кумулятивный массив из заданного массива - " + Arrays.toString(cumsum(CumArr)));//14 task
-        System.out.println("15. Количество десятичных значащих цифр в числе - " + decnum("535.0001"));//15 task
-        System.out.println("16. Число Фибоначчи для заданного числа - " + fibonacci(7));//16 task
-        System.out.println("17. Введённая строка является почтовым индексом - " + post("13123"));//17 task
-        System.out.println("18. Введённые строки являются странными - " + isstrange("sdbdff", "f33bsc"));//18 task
-        System.out.println("19. Суффиксная функция возвращает " + suffix("kitvxtycat", "-cawt") + ", а префиксная - " + prefix("supercar", "super-"));//19 task
-        System.out.println("20. Функция подсчёта полей при заданном ходе вернёт " + box(6));//20 task
-        System.out.println("21. Квадратное уравнение с заданными коэффициентами имеет " + squaresolution(1, 2, -52) + " действительных решений");//21 task
-        System.out.println("22. Позиция второго вхождения zip в строку - " + zippo("zippo? your father zipper looking for you "));//22 task
-        System.out.println("23. Число является совершенным - " + isperfect(496));//23 task
-        System.out.println("24. Возвращённая строка после преобразования - " + strmaker("Каждый охотник желает знать"));//24 task
-        System.out.println("25. Введённая строка является допустимым шестнадцатиричным кодом - " + ishex("#19Fc46A"));//25 task
-        int[] mas1 ={1,5,8,8,6};
-        int[] mas2 ={5,9,84,3};
-        System.out.println("26. Введённые массивы содержат одинаковое число уникальных элементов - " + samemas(mas1,mas2));//26 task
-        System.out.println("27. Введённое число является числом Капрекара - " + kaprekara(9));//27 task
-        System.out.println("28. Самая длинная последовательность нулей - " + zeros("001000"));//28 task
-        System.out.println("29. Следующее простое число после заданного - " + issimple(32));//29 task
-        System.out.println("30. Это прямоугольный треугольник - " + istriangle(5, 4, 3));//30 task
-        System.out.println("31. Преобразованный текст будет иметь вид - " + textmaker(11,"Hi my name is Van and Im an artist Im performance artist"));//31 task
-        System.out.println("32. Кластеры будут иметь вид " + Arrays.toString(brakets("((())))((()()())")));//32 task
-        System.out.println("33. Строка после преобразования в \"змею\" будет иметь вид "+ snake("getToTheChoppa")+", а в \"верблюда\" - "+camel("if_it_bleeds_we_can_kill_it"));//33 task
-        double[] work= {9, 19, 155.8, 1.26};
-        System.out.println("34. Оплата за этот день составит "+ payment(work));//34 task
-        System.out.println("35. Ваш индекс массы тела составлет "+ imt(64, 182));//35 task
-        System.out.println("36. Мультипликативное постоянство введённого числа - "+ multiplicate(3999989));//36 task
-        System.out.println("37. Звёздная стенография введённой строки - "+ starmult("333rrrrffffwf222222"));//37 task
-        String punch1="never gonna give you up", punch2="never gonna let you down";
-        System.out.println("38. Введённые строки рифмуются - "+ ispunch(punch1,punch2));//38 task
-        System.out.println("39. Цифра повторяется в первом числе трижды, а во втором дважды - "+ repeater(123335, 5483378));//39 task
-        System.out.println("40. Число книг в строке - "+ books("acaafffcaacaca",'a'));//40 task
-        int[] arr = {105, 8112, -8109, 0, -76, 72, -7, 21, -17, -69, 84, 3, -8, -79, 78, 7, -8, -11, 3, 13, -82, 25, 58, -71, -12, 65, -65, 78, 7, -8, -11, 3, 13, -82, 25, -25, 76, -11, 17, -11, -2, -57, -12, 65, -65, 78, 7, -8, -11, 3, 13, -82, 22, -22, 87, -14, 11, -12, -72, 69, 19, -4, -2, -17, -65, 68, 5, 7, -68, -12, 65, -65, 78, 7, -8, -11, 3, 13, -82, 23, -11, -12, 84, 3, -8, -79, 78, 7, -8, -11, 3, 13, -82, 20, 1, 62, -71, -12, 79, -1, -9, -69, 87, -14, 11, -12, -72, 67, 5, -3, 0, 14, -14, -57, -12, 65, 13, -10, -68, 65, -65, 76, -11, -52, 52, -52, 52, -52, 69, -11, -2, -69, 83, -4, -11, -3, -51};
-        System.out.println("41. Зашифрованное послание будет иметь вид - "+ Arrays.toString(encrypt("i’ll have two number 9s, a number 9 large, a number 6 with extra dip, a number 7, two number 45s, one with cheese, and a la-a-a-rge soda."))+", а расшифрованное - "+ decrypt(arr));//41 task
-        System.out.println("42. Выбранная фигура может двигаться в указанный квадрат - "+ chessmats("король", "f6","g6"));//42 task
-        System.out.println("43. Введённое слово может быть завершено - "+ canbedone("kamru","karakum"));//43 task
-        int[] intarr ={36, 5, 71, 7438, 1, 9};
-        System.out.println("44. Число, возвращаемое функцией сложения и умножения чисел - "+ summult(intarr));//44 task
-        String[] strings = {"toy","boy","cow","bat", "sony","ponyyyy"};
-        System.out.println("45. Слова, имеющие те же гласные, что и первое слово - "+ Arrays.toString(vowels(strings)));//45 task
-        System.out.println("46. Введённое число является банковской картой - "+ cardvalid("1234567890123452"));//46 task
-        System.out.println("47. Введённое число по-английски - "+ numtoword(666));//47 task
-        System.out.println("47. Введённое число по-русски - "+ numtowordr(666));//47 task
-        //System.out.println("48.  "+ ());//48 task
-        System.out.println("49. Исправленная строка будет иметь вид "+ correcttitle("it IS weDnEsDaY, my dudES!"));//49 task
-        System.out.println("50. Многоcтрочная прямоугольная строка для заданного \"шестиугольного\" числа - "+ hexnums(37+24+30));//50 task
-        //System.out.println("51. Число Белла для введённого массива - "+ bell());//51 task
-        System.out.println("52. Слово на свинском латинском - "+ pigword("weather"));//52 task
-        System.out.println("52. Предложение на свинском латинском - "+ pigoffer("it is wednesday, my dudes!"));//52 task
-        System.out.println("53. Введённая строка является допустимым RGB значением - "+ rgb(("rgba(0,6,0, 12)")));//53 task
-        System.out.println("54. Возвращённый URL - "+ url("https://edabit.com?a=1&b=2&a=2"));//54 task
-        //System.out.println("55. "+ ());//55 task
-        //System.out.println("56. "+ ());//56 task
-        //System.out.println("57. "+ ());//57 task
-        //System.out.println("58. "+ ());//58 task
-        //System.out.println("59. "+ ());//59 task
-        //System.out.println("60. "+ ());//60 task
-    }
     public static double remainder(double a, double b) //1 task
     {
             return a % b;
@@ -1665,18 +1590,18 @@ public class Tasks {
             ++i;
             if (temp.equals("com?")&&i!=str.length()-1)//если должны быть параметры и они есть
             {
-                int ques =0, equs=0, chars=0;
+                int ques =0, equs=0;
                 for (int j=i; j < str.length(); j++) {
-                    if (Character.isAlphabetic(str.charAt(j))) chars++;
+                    //if (Character.isAlphabetic(str.charAt(j))) chars++;
                     if (str.charAt(j)=='='&&Character.isDigit(str.charAt(j+1))) equs++;
                     if (str.charAt(j)=='&') ques++;
                 }
-                if (ques+1==equs&&equs==chars)//если введено корректно
+                if (ques+1==equs)//если введено корректно
                 {
                     String part = str.substring(i);
-                    String[] words = part.split("&");
-                    String[] names = new String[words.length];
-                    String[] vals_str = new String[words.length];
+                    String[] words = part.split("&");//массив переменных со значениями
+                    String[] names = new String[words.length];//массив имён переменных
+                    String[] vals_str = new String[words.length];//массив значений переменных
                     for (int j = 0, k=0; j < words.length; j++) {
                         names[j]="";
                         vals_str[j]="";
@@ -1692,15 +1617,22 @@ public class Tasks {
                             k++;
                         }
                         k=0;
-                    }
-                    for (int word1 = 0; word1 < words.length; word1++) {//сравнение всех переменных по имени
-                        for (int m = word1; m < words.length; m++) {
-                            if (names[word1].equals(names[word1+1]))
+                    }////////////нужно определить, какие переменные повторяются и оставить только плсденее повторение если оно есть
+                    boolean[] repeat = new boolean[words.length];
+                    for (int word1 = words.length-1; word1 > 0; word1--) {//сравнение всех переменных по имени
+                        for (int word2 = word1-1; word2 >= 0; word2--) {
+                            if (names[word1].equals(names[word2]))
                             {
-                                res+=names[word1]+"="+vals_str[word1+1];
-                            };
+                                repeat[word2]= true;
+                            }
                         }
                     }
+                    for (int j = 0; j < words.length; j++) {
+                        if (repeat[j]==false){
+                            res+=words[j]+ "&";
+                        }
+                    }
+                    res+="\b";
                 }
             }
             else//если должны быть параметры и их нет
@@ -1708,12 +1640,336 @@ public class Tasks {
                 return "не является URL";
             }
         }
-        return "1";
+        return res;
     }
-   /* public static String[] tags(String str)//55 task
+    public static String[] tags(String str)//55 task
     {
+        int[] ints = new int[3];
         String lower_case = str.toLowerCase();
+        lower_case = lower_case.trim();
         lower_case = lower_case.replaceAll("\\p{Punct}","");
-    }*/
+        String[] mas = lower_case.split(" ");
+        boolean[] bools = new boolean[mas.length];
+        for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < mas.length; i++) {
+            if (bools[i]){
+                continue;
+            }
+            if (mas[i].length()>ints[j]){
+                ints[j]=i;
+            }
+        }
+            bools[ints[j]]=true;
+        }
+        if (mas.length>2) {
+            String[] res = new String[3];
+            for (int i = 0; i < 3; i++) {
+                res[i]= "#"+mas[ints[i]];
+            }
+            return res;
+        }
+        else {
+            String[] res = new String[mas.length];
+            for (int i = 0; i < mas.length; i++) {
+                res[i]= "#"+mas[ints[i]];
+            }
+            return res;
+        }
+    }
+    public static int ulam(int val){//56 task
+        Vector<Integer> vec = new Vector<>(2);
+        int count =0;
+        vec.add(1);
+        vec.add(2);
+        int max =999999999;
+        for (int i = 3; i < max; i++) {//искать в числах до мах
+            for (int j = 0; j < vec.size()-1; j++) {//
+                for (int k = j+1; k < vec.size(); k++) {
+                    if (vec.get(j)+vec.get(k)==i)
+                    {
+                        count++;
+                    }
+                    if (count>1)
+                        break;
+                }
+                if (count>1)
+                    break;
+            }
+            if (count==1) {
+                vec.add(i);
+            }
+            count=0;
+            if (vec.size()==val) return vec.get(val-1);
+        }
+        return 1;
+    }
+    public static String unicstr(String str) {//57 task
+        int mas[][] = new int[str.length() + 1][str.length() + 1];
+        String res = "";
+        int res_length = 0;
+        int i, index = 0;
+        for (i = 1; i <= str.length(); i++) {
+            for (int j = i + 1; j <= str.length(); j++) {
+                if (str.charAt(i - 1) == str.charAt(j - 1)&& mas[i - 1][j - 1] < (j - i)) {
+                    mas[i][j] = mas[i - 1][j - 1] + 1;
+                    if (mas[i][j] > res_length) {
+                        res_length = mas[i][j];
+                        index = Math.max(i, index);
+                    }
+                } else {
+                    mas[i][j] = 0;
+                }
+            }
+        }
+        if (res_length > 0) {
+            for (i = index - res_length + 1; i <= index; i++) {
+                res += str.charAt(i - 1);
+            }
+        }
+        return res;
+    }
+    public static String toroma(int val) {//58 task
+        String res="";
+        if (val<4000){
+            int thousands = val/1000, hundreds=(val/100)%10, teens=(val/10)%10, simples=val%10;
+            for (int i = 0; i < thousands; i++) {
+                res+="M";
+            }
+            if (hundreds>0&&hundreds<4) {
+                for (int i = 0; i < hundreds; i++) {
+                    res+="C";
+                }
+            }
+            if (hundreds==4){
+                res+="CD";
+            }
+            if (hundreds>4&&hundreds<9){
+                res+="D";
+                for (int i = 0; i < hundreds-5; i++) {
+                    res+="C";
+                }
+            }
+            if (hundreds==9){
+                res+="CM";
+            }
+            if (teens>0&&teens<4) {
+                for (int i = 0; i < teens; i++) {
+                    res+="X";
+                }
+            }
+            if (teens==4){
+                res+="XL";
+            }
+            if (teens>4&&teens<9){
+                res+="L";
+                for (int i = 0; i < teens-5; i++) {
+                    res+="X";
+                }
+            }
+            if (teens==9){
+                res+="XC";
+            }
+            if (simples>0&&simples<4) {
+                for (int i = 0; i < simples; i++) {
+                    res+="I";
+                }
+            }
+            if (simples==4){
+                res+="IV";
+            }
+            if (simples>4&&simples<9){
+                res+="V";
+                for (int i = 0; i < simples-5; i++) {
+                    res+="I";
+                }
+            }
+            if (simples==9){
+                res+="IX";
+            }
+            return res;
+        }
+        else return "Введите число меньше 4000";
+    }
+    public static boolean formula(String str) {//59 task
+        String temp = str.replace(" ", "");
+        for (int i = 0; i < temp.length(); i++) {
+            if (!Character.isDigit(temp.charAt(i))&&temp.charAt(i)!='+'&&temp.charAt(i)!='-'&&temp.charAt(i)!='*'&&temp.charAt(i)!='/'&&temp.charAt(i)!='>'&&temp.charAt(i)!='<'&&temp.charAt(i)!='='&&temp.charAt(i)!='%')
+            {
+                return false;
+            }
+        }
+        String first = "", second = "", res = "", operand1 = "", operand2 = "";
+        double first_val = 0, second_val = 0, res_val = 0;
+        char operand1_char, operand2_char,operand12_char=0, operand22_char = 0;
+        int i = 0;
+        while (str.charAt(i) != '+' && str.charAt(i) != '-' && str.charAt(i) != '*' && str.charAt(i) != '/' && str.charAt(i) != '%') {
+            first += str.charAt(i);
+            i++;
+        }
+        operand1 += str.charAt(i);
+        i++;
+        while (str.charAt(i) != '=') {
+            second += str.charAt(i);
+            i++;
+        }
+        operand2 += str.charAt(i);
+        i++;
+        while (i != str.length()) {
+            res += str.charAt(i);
+            i++;
+        }
+        first_val = Double.parseDouble(first);
+        second_val = Double.parseDouble(second);
+        res_val = Double.parseDouble(res);
+        operand1_char=operand1.charAt(0);
+        if (operand1.length()>1)
+        {
+            operand12_char=operand1.charAt(1);
+        }
+        operand2_char=operand2.charAt(0);
+        if (operand2.length()>1)
+        {
+            operand22_char=operand2.charAt(1);
+        }
+        if (operand1_char == '+') {
+            if (operand2_char == '=') {
+                if (first_val + second_val == res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '>'&& operand22_char == '=') {
+                if (first_val + second_val >= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<'&& operand22_char == '=') {
+                if (first_val + second_val <= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<') {
+                if (first_val + second_val < res_val) {
+                    return true;
+                } else return false;
+            }
+        }
+        if (operand1_char == '-') {
+            if (operand2_char == '=') {
+                if (first_val - second_val == res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '>'&& operand22_char == '=') {
+                if (first_val - second_val >= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<'&& operand22_char == '=') {
+                if (first_val - second_val <= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<') {
+                if (first_val - second_val < res_val) {
+                    return true;
+                } else return false;
+            }
+        }
+        if (operand2_char == '*') {
+            if (operand2_char == '=') {
+                if (first_val * second_val == res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '>'&& operand22_char == '=') {
+                if (first_val * second_val >= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<'&& operand22_char == '=') {
+                if (first_val * second_val <= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<') {
+                if (first_val * second_val < res_val) {
+                    return true;
+                } else return false;
+            }
+        }
+        if (operand1_char == '/') {
+            if (operand2_char == '=') {
+                if (first_val / second_val == res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '>'&& operand22_char == '=') {
+                if (first_val / second_val >= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<'&& operand22_char == '=') {
+                if (first_val / second_val <= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<') {
+                if (first_val / second_val < res_val) {
+                    return true;
+                } else return false;
+            }
+        }
+        if (operand1_char == '%') {
+            if (operand2_char == '=') {
+                if (first_val % second_val == res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '>'&& operand22_char == '=') {
+                if (first_val % second_val >= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<'&& operand22_char == '=') {
+                if (first_val % second_val <= res_val) {
+                    return true;
+                } else return false;
+            }
+            if (operand2_char == '<') {
+                if (first_val % second_val < res_val) {
+                    return true;
+                } else return false;
+            }
+        }
+        return false;
+    }
+    public  static boolean ispalindrome(int val){
+        int counter =0, temp=val;
+        while (temp!=0){
+            temp/=10;
+            counter++;
+        }
+        if (counter%2 ==1){
+            return false;
+        }
+        String str = Integer.toString(val);
+        for (int i = 0, j=str.length()-1; i < j/2; i++,j--) {
+            if (str.charAt(i)!=str.charAt(j)){
+                String str2 = "";
+                for (int k = 0; k < str.length()-1; k+=2) {
+                    str2+=Integer.toString(Integer.parseInt(String.valueOf(str.charAt(k)))+Integer.parseInt(String.valueOf(str.charAt(k+1))));
+                }
+                for (int n = 0, l=str2.length()-1; n < l/2; n++,l--) {
+                    if (str2.charAt(n)!=str2.charAt(l)) {
+                        return false;
+                    }
+                    }
+                return true;
+            }
+        }
+        return true;
+    }
 }
+
+
 
