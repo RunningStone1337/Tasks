@@ -254,7 +254,7 @@ public class Tasks {
         arr[arr.length-1]= temp;
         return new String(arr);
     }
-    public static boolean ishex(String str)//25 task////////ПРОВЕРИТЬ
+    public static boolean ishex(String str)//25 task////////ПОКАЗАТЬ
     {
         char[] arr = new char[str.length()];
         if (arr.length!=7&&arr[0]!='#') return false;
@@ -263,7 +263,7 @@ public class Tasks {
         }
         for (int i=1; i< arr.length; i++)
         {
-            if (!Character.isDigit(arr[i])&&(arr[i]!='\u0041')&&(arr[i]!='\u0042')&&(arr[i]!='\u0043')&&(arr[i]!='\u0044')&&(arr[i]!='\u0045')&&(arr[i]!='\u0046'))return false;
+            if (!Character.isDigit(arr[i])&&(arr[i]!='\u0041')&&(arr[i]!='\u0042')&&(arr[i]!='\u0043')&&(arr[i]!='\u0044')&&(arr[i]!='\u0045')&&(arr[i]!='\u0046')&&(arr[i]!='\u0061')&&(arr[i]!='\u0062')&&(arr[i]!='\u0063')&&(arr[i]!='\u0064')&&(arr[i]!='\u0065')&&(arr[i]!='\u0066'))return false;
         }
         return true;
     }
@@ -882,7 +882,7 @@ public class Tasks {
             return false;
         }
     }
-    public static int   summult(int[] arr)//44 task/////////ПРОЕВЕРИТЬ
+    public static int   summult(int[] arr)//44 task/////////ПОКАЗАТЬ
     {
         int sum =0,mult=1;
         String str ="";
@@ -1494,7 +1494,7 @@ public class Tasks {
         }
         return  res;
     }
-    public static boolean rgb(String str)//53 task/////ПРОВЕРИТЬ
+    public static boolean rgb(String str)//53 task/////ПОКАЗАТЬ
     {
         String temp = "";
         int i = 0;
@@ -1938,7 +1938,7 @@ public class Tasks {
         }
         return false;
     }
-    public  static boolean ispalindrome(int val){
+    public  static boolean ispalindrome(int val){//ПОКАЗАТЬ
         int counter =0, temp=val;
         while (temp!=0){
             temp/=10;

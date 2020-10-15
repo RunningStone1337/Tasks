@@ -31,7 +31,7 @@ public class Answers {
         System.out.println("22. Позиция второго вхождения zip в строку - " + Tasks.zippo("zippo? your father zip zippers looking for you "));//22 task
         System.out.println("23. Число является совершенным - " + Tasks.isperfect(8128));//23 task
         System.out.println("24. Возвращённая строка после преобразования - " + Tasks.strmaker("Каждый охотник желает знать"));//24 task
-        System.out.println("25. Введённая строка является допустимым шестнадцатиричным кодом - " + Tasks.ishex("#9Fc4A"));//25 task
+        System.out.println("25. Введённая строка является допустимым шестнадцатиричным кодом - " + Tasks.ishex("#9Fc24A"));//25 task
         int[] mas1 ={1,5,8,8,6};
         int[] mas2 ={5,9,84,3,3};
         System.out.println("26. Введённые массивы содержат одинаковое число уникальных элементов - " + Tasks.samemas(mas1,mas2));//26 task
