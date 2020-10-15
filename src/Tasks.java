@@ -254,7 +254,7 @@ public class Tasks {
         arr[arr.length-1]= temp;
         return new String(arr);
     }
-    public static boolean ishex(String str)//25 task
+    public static boolean ishex(String str)//25 task////////ПРОВЕРИТЬ
     {
         char[] arr = new char[str.length()];
         if (arr.length!=7&&arr[0]!='#') return false;
@@ -882,7 +882,7 @@ public class Tasks {
             return false;
         }
     }
-    public static int   summult(int[] arr)//44 task
+    public static int   summult(int[] arr)//44 task/////////ПРОЕВЕРИТЬ
     {
         int sum =0,mult=1;
         String str ="";
@@ -1493,7 +1493,7 @@ public class Tasks {
         }
         return  res;
     }
-    public static boolean rgb(String str)//53 task
+    public static boolean rgb(String str)//53 task/////ПРОВЕРИТЬ
     {
         String temp = "";
         int i = 0;
@@ -1943,7 +1943,7 @@ public class Tasks {
         }
         return false;
     }
-    public  static boolean ispalindrome(int val){
+    public  static boolean ispalindrome(int val){//ПРОВЕРИТЬ
         int counter =0, temp=val;
         while (temp!=0){
             temp/=10;
@@ -1953,21 +1953,20 @@ public class Tasks {
             return false;
         }
         String str = Integer.toString(val);
-        for (int i = 0, j=str.length()-1; i < j/2; i++,j--) {
-            if (str.charAt(i)!=str.charAt(j)){
-                String str2 = "";
+        while (str.length()!=2||(Integer.parseInt(String.valueOf(str.charAt(0)))+Integer.parseInt(String.valueOf(str.charAt(1))))>9){
+            String str2 = "";
+        for ( int i = 1, j=str.length();i <= j/2; i++,j--) {
+            if (str.charAt(i-1)!=str.charAt(j-1)){//если исходное значение не палиндром
                 for (int k = 0; k < str.length()-1; k+=2) {
                     str2+=Integer.toString(Integer.parseInt(String.valueOf(str.charAt(k)))+Integer.parseInt(String.valueOf(str.charAt(k+1))));
                 }
-                for (int n = 0, l=str2.length()-1; n < l/2; n++,l--) {
-                    if (str2.charAt(n)!=str2.charAt(l)) {
-                        return false;
-                    }
-                    }
-                return true;
+                str = str2;
+                break;
             }
         }
-        return true;
+        }
+        if(str.charAt(0)==str.charAt(1))return true;
+        else return false;
     }
 }
 
