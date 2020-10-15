@@ -892,12 +892,13 @@ public class Tasks {
         str = Integer.toString(sum);
         while (str.length()!=1)
         {
+            mult=1;
             for (int i = 0; i < str.length(); i++) {
                 mult*=Character.getNumericValue(str.charAt(i));
             }
             str = Integer.toString(mult);
         }
-        return sum;
+        return mult;
 
     }
     public static String[] vowels(String[] arr)//45 task
@@ -1509,16 +1510,10 @@ public class Tasks {
                 i++;
             }
             if (i!=str.length()-1) return false;
-            i=0;
-            for (int j = 0; j < 2; j++) {
-                String temp_val ="";
-                while (temp.charAt(i)!=',')
-                {
-                    temp_val+=temp.charAt(i);
-                    i++;
-                }
-                i++;
-                double val = Double.parseDouble(temp_val);
+            temp = str.substring(4,str.length()-1);
+            String[] temparr = temp.split(",");
+            for (int j = 0; j < temparr.length; j++) {
+                double val = Double.parseDouble(String.valueOf(temparr[j]));
                 if (val<0||val>255)
                     return false;
             }
@@ -1943,7 +1938,7 @@ public class Tasks {
         }
         return false;
     }
-    public  static boolean ispalindrome(int val){//ПРОВЕРИТЬ
+    public  static boolean ispalindrome(int val){
         int counter =0, temp=val;
         while (temp!=0){
             temp/=10;
