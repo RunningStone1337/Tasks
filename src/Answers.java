@@ -55,7 +55,7 @@ public class Answers {
         System.out.println("41. Зашифрованное послание будет иметь вид - "+ Arrays.toString(Tasks.encrypt("Hello"))+", а расшифрованное - "+ Tasks.decrypt(arr));//41 task
         System.out.println("42. Выбранная фигура может двигаться в указанный квадрат - "+ Tasks.chessmats("ферзь", "f6","q6"));//42 task
         System.out.println("43. Введённое слово может быть завершено - "+ Tasks.canbedone("kamru","kruty"));//43 task
-        int[] intarr ={16,28};
+        int[] intarr ={16,28,32};
         System.out.println("44. Число, возвращаемое функцией сложения и умножения чисел - "+ Tasks.summult(intarr));//44 task
         String[] strings = {"ty","boy","cow","bat", "sony","ponyyyy"};
         System.out.println("45. Слова, имеющие те же гласные, что и первое слово - "+ Arrays.toString(Tasks.vowels(strings)));//45 task
@@ -68,7 +68,7 @@ public class Answers {
         //System.out.println("51. Число Белла для введённого массива - "+ Tasks.bell());//51 task
         System.out.println("52. Слово на свинском латинском - "+ Tasks.pigword("weather"));//52 task
         System.out.println("52. Предложение на свинском латинском - "+ Tasks.pigoffer("it is wednesday, my dudes!"));//52 task
-        System.out.println("53. Введённая строка является допустимым RGB значением - "+ Tasks.rgb(("rgb(0,6,375)")));//53 task
+        System.out.println("53. Введённая строка является допустимым RGB значением - "+ Tasks.rgb(("rgba(0,6,253, 0)")));//53 task
         System.out.println("54. Возвращённый URL - "+ Tasks.url("https://edabit.com?a=1&b=4&a=2&a=2&b=2&af=24"));//54 task
         System.out.println("55. Газетный заголовок в виде хештегов - "+ Arrays.toString(Tasks.tags("Hi, my name is Eminem!")));//55 task
         System.out.println("56. Следующее число Улама - "+ Tasks.ulam(206));//56 task
