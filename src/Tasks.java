@@ -1,5 +1,4 @@
 import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.Vector;
 
 public class Tasks {
@@ -349,26 +348,26 @@ public class Tasks {
     }
     public static int issimple(int val)//29 task
     {
-        int seps = 0, next;
-        for (int i = 1; i <= val; i++) {
-            if (val % i == 0) ++seps;
-            if (seps > 2) break;
+        int seps = 0, next;//счётчик делителей текущего проверяемого числа и следующее простое число
+        for (int i = 1; i <= val; i++) {//проверяем все числа от 1 до введённого числа на делимость на текущий счётчик
+            if (val % i == 0) ++seps;//если делится, увеличиваем количество делителей текущего числа
+            if (seps > 2) break;//если их больше 2, можно не проверять число дальше
         }
-        if (seps == 2) return val;
-        for (next = ++val;  ; next++) {
-            seps = 0;
-            for (int i = 1; i <= next; i++) {
+        if (seps == 2) return val;//если делителей ровно 2(1 и само число - число простое) возвращаем это число
+        for (next = ++val;  ; next++) {//иначе ищем следующее простое в бесконечном цикле пока не найдём
+            seps = 0;//обнуляем счётчик делителей числа
+            for (int i = 1; i <= next; i++) {//то же что в 1 цикле до тех пор пока не найдём простое число
                 if (next % i == 0) ++seps;
                 if (seps > 2) break;
             }
-            if (seps == 2) return next;
+            if (seps == 2) return next;//и возвращаем его
         }
     }
     public static boolean istriangle(int x, int y, int z)//30 task
     {
-        int max, min, mid;
+        int max, min, mid;//для каждой из сторог треугольника, названия говорят за себя
         max = mid = min = 0;
-        if ((x>y)&&(x>z))
+        if ((x>y)&&(x>z))//определяем какое из введённых значений минимальное, максимальное и среднее, можно сделать и лучше, да
         {
             max=x;
             if (y>z)
@@ -382,7 +381,7 @@ public class Tasks {
                 min=y;
             }
         }
-        if ((y>x)&&(y>z))
+        if ((y>x)&&(y>z))//в каждой ветке проверяем какое знаение есть мин, макс и сред в зависимости от входных параметров
         {
             max=y;
             if (x>z)
@@ -410,9 +409,9 @@ public class Tasks {
                 min=y;
             }
         }
-        if ((Math.pow(max, 2))==((Math.pow(min, 2))+(Math.pow(mid, 2))))
+        if ((Math.pow(max, 2))==((Math.pow(min, 2))+(Math.pow(mid, 2))))//если квадрат гипотенузы = сумме квадратов катетов
         {
-            return true;
+            return true;//это прямоугольный треуг
         }
         else
         {
@@ -421,28 +420,28 @@ public class Tasks {
     }
     public static String  textmaker(int n, String source)//31 task
     {
-        String strres ="", temp_word_str="";
-        int temp_word=0;
-        int temp_str=0;
-        char[] arr = source.toCharArray();
-        for (int i=0; i<arr.length;i++)
+        String strres ="", temp_word_str="";//строка для результата и текущего слова
+        int temp_word=0;//длина слова
+        int temp_str=0;//длина и строки, нужны для учёта длины строки без пробелов(по условию)
+        //char[] arr = source.toCharArray();
+        for (int i=0; i<source.length();i++)//для всей исходной строки
         {
-            if (arr[i] != ' ')
+            if (source.charAt(i) != ' ')//если символ != пробел
             {
-                temp_word_str += arr[i];
-                temp_word++;
+                temp_word_str += source.charAt(i);//к текущему слову щаписываем текущий символ
+                temp_word++;//и увеличиваем его длину
             }
-            else
+            else//если символ = пробел
             {
-                if (temp_str+temp_word<=n)
+                if (temp_str+temp_word<=n)//если длина текущей строки и слова <= заданного параметра
                 {
-                    temp_str+=temp_word;
-                    strres +=temp_word_str + " ";
-                    temp_word=0;
-                    temp_word_str="";
+                    temp_str+=temp_word;//к длине текущей строки прибавляем длину текузего слова,
+                    strres +=temp_word_str + " ";//кр езультирующей строке текущее слово и пробел
+                    temp_word=0;//сбрасываем временный счётчик
+                    temp_word_str="";//и строку
 
                 }
-                else
+                else//иначе то же самое с новой строки
                 {
                     strres +="\n" + temp_word_str + " ";
                     temp_str=temp_word;
@@ -451,7 +450,7 @@ public class Tasks {
                 }
             }
         }
-        if (temp_str+temp_word<=n)
+        if (temp_str+temp_word<=n)//для проверки после главного цикла с учётом последнего символа
         {
             temp_str+=temp_word;
             strres +=temp_word_str + " ";
@@ -470,10 +469,10 @@ public class Tasks {
     }
     public static String[]  brakets(String source)//32 task
     {
-        String temp ="";
-        int left=0, right=0, k=0, groups=0;
-        char[] arr = source.toCharArray();
-        for (int i=0; i< arr.length; i++)
+        String temp ="";//для текущего кластера скобок
+        int left=0, right=0, k=0, groups=0;//счётчики левых скобок в источнике, правых, счётчик, количество кластеров в исходной строке
+        char[] arr = source.toCharArray();//можно убрать
+        for (int i=0; i< arr.length; i++)//для всей строки считаем количество правых и левых скобок и групп ими образованныъ
         {
             if (arr[i]=='(')
             {
@@ -489,10 +488,10 @@ public class Tasks {
                 left=right=0;
             }
         }
-        int iter = arr.length-left-right;
-        left=right=0;
-        String[] res = new String[groups];
-        for (int i=0; i< iter; i++)
+        int iter = arr.length-left-right;//число итераций второго цикла для отсечения скобок без пар
+        left=right=0;//сброс счётчиков
+        String[] res = new String[groups];//массив строк для вывода резулттата
+        for (int i=0; i< iter; i++)//второй цикл для формирования кластеров и записи их в массив строк
     {
         if (arr[i]=='(')
         {
@@ -515,52 +514,52 @@ public class Tasks {
     }
     public static String  snake(String source)//33 task
     {
-        char[] arr = source.toCharArray();
-        String str ="";
-        for (int i=0; i<arr.length;i++)
+        char[] arr = source.toCharArray();//можно убрать
+        String str ="";//для рзультата
+        for (int i=0; i<arr.length;i++)//для всех букв
         {
-            if (Character.isUpperCase(arr[i]))
+            if (Character.isUpperCase(arr[i]))//если буква заглавная
             {
-                str+="_"+Character.toLowerCase(arr[i]);
+                str+="_"+Character.toLowerCase(arr[i]);//сначала добавляем _ в строку результата, потом понижаем регистр буквы
             }
             else
             {
-                str+=arr[i];
+                str+=arr[i];//иначе просто заисываем букву
             }
         }
         return str;
     }
     public static String  camel(String source)//33 task
     {
-        char[] arr = source.toCharArray();
-        String str ="";
-        for (int i=0; i<arr.length;i++)
+        char[] arr = source.toCharArray();//убрать
+        String str ="";//результат
+        for (int i=0; i<arr.length;i++)//то же самое с точностью до наоборот
         {
-            if (arr[i]=='_')
+            if (arr[i]=='_')//_ заменяем на заглавную последующую букву
             {
                 str+=Character.toUpperCase(arr[i+1]);
-                i++;
+                i++;//не забываем увеличить счётчик чтобы буква не повторилась
             }
             else
             {
-                str+=arr[i];
+                str+=arr[i];//иначе просто запсываем юукву
             }
         }
         return str;
     }
     public static String  payment(double[] arr)//34 task
     {
-        String str="$";
-        double pay=0;
-        if (arr[1]>17)
+        String str="$";//результат
+        double pay=0;//размер оплаты
+        if (arr[1]>17)//если была сверхурочная работа
         {
-            pay= (arr[1]-arr[0])*arr[2]+(arr[1]-18)*arr[2]*arr[3];
-            DecimalFormat decimalFormat = new DecimalFormat( "#.##" );
-            str+= decimalFormat.format(pay);
+            pay= (arr[1]-arr[0])*arr[2]+(arr[1]-18)*arr[2]*arr[3];//начисляем оплату по сверхурочному тарифу
+            DecimalFormat decimalFormat = new DecimalFormat( "#.##" );//для форматированного вывода
+            str+= decimalFormat.format(pay);//форматируем вывод
         }
-        else
+        else//если был нормальный рабочий день
         {
-            pay= (arr[1]-arr[0])*arr[2];
+            pay= (arr[1]-arr[0])*arr[2];//начисляем оплату по обычному тарифу
             DecimalFormat decimalFormat = new DecimalFormat( "#.###" );
             str+= decimalFormat.format(pay);
         }
@@ -568,22 +567,22 @@ public class Tasks {
     }
     public static String  imt(double weight, double height)//35 task
     {
-        if (height>100)
+        if (height>100)//если ввели рост в формате сантиметров, переводим в формат метров
         {
             height= height/100;
         }
-        String res="";
-        double pow =weight/(Math.pow(height, 2));
-        DecimalFormat decimalFormat = new DecimalFormat( "#.##" );
-        if (pow<18.5)
+        String res="";//результат
+        double pow =weight/(Math.pow(height, 2));//формула расчёта ИМТ
+        DecimalFormat decimalFormat = new DecimalFormat( "#.##" );//формат вывода с округлением до 2 знаков
+        if (pow<18.5)//если индекс соотв. недовесу
         {
             res= decimalFormat.format(pow)+", у вас недовес";
         }
-        if (pow>18.5&pow<25)
+        if (pow>18.5&pow<25)//если индекс соотв. норме
         {
             res= decimalFormat.format(pow)+", у вас нормальный вес";
         }
-        if (pow>25)
+        if (pow>25)//если индекс соотв. избытку
         {
             res= decimalFormat.format(pow)+", вы - жиробас";
         }
@@ -591,47 +590,47 @@ public class Tasks {
     }
     public static int  multiplicate(int val)//36 task
     {
-        int res=0, temp=11;
-        String str = Integer.toString(val);
-        String temp_str;
-        char[] arr = str.toCharArray();
-        int arri;
-        while (temp>10){
+        int res=0, temp=11;//результат и начальное значение множителя 11 чтобы попасть в 1 итерацию вайла, при заходе в цикл сбрасывается в 1 можно заменить на do while, но мне лень
+        String str = Integer.toString(val);//число в формат строки
+        String temp_str;//врмеенная строка
+        char[] arr = str.toCharArray();//убрать
+        int arri;//текущее числовое значение символа строки в цикле
+        while (temp>10){//пока исходное число не стнет меньше 10
             temp=1;
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i < arr.length; i++)//по всей длине числа
         {
-            arri = Character.getNumericValue(arr[i]);
-            temp*=arri;
+            arri = Character.getNumericValue(arr[i]);//получаем числовое значение цифры в строке
+            temp*=arri;//перемножаем все цифры в числе между собой
         }
-            temp_str= Integer.toString(temp);
-            arr = temp_str.toCharArray();
-            res++;
+            temp_str= Integer.toString(temp);//переводим произведение в строку
+            arr = temp_str.toCharArray();//и записываем в массив чаров, лучше убрать и работать прямо со строкой дальше
+            res++;//увеличиваем мультипликативный счётчик
         }
         return res;
     }
     public static String  starmult(String str)//37 task
     {
-        if (str.length()==0) return "";
-        String res="";
-        int mult=1, i = 0;
-        char[] arr = str.toCharArray();
-        for (; i < arr.length-1; i++) {
-            if (arr[i]==arr[i+1])
+        if (str.length()==0) return "";//если пустая строка, вернуть пустую
+        String res="";//для результата
+        int mult=1, i = 0;//счётчик совпадающих символов в текущей проверке и итератор циклаЮ вынесен за определение цикла
+        char[] arr = str.toCharArray();//лучше убрать и работать со строкой
+        for (; i < arr.length-1; i++) {//проверяем совпадение символов в строке
+            if (arr[i]==arr[i+1])//если совпали
             {
-                mult++;
-                continue;
+                mult++;//увеличиваем счётчик совпадения
+                continue;//продолжаем цикл с новой итерации
             }
-            if (mult==1)
+            if (mult==1)//если счётчик = 1, т.е. сседние символы различны
             {
-                res+=arr[i];
+                res+=arr[i];//записываем текущий симв в результат
             }
-            else
+            else//иначе записываем символ и *n его повторений
             {
                 res += arr[i] + "*" + mult;
-                mult = 1;
+                mult = 1;//и сбрасиываем счётчик повторов
             }
         }
-        if (mult==1)
+        if (mult==1)//проверка после основого цикла для последнего символа строки
         {
             res+=arr[i];
         }
@@ -643,48 +642,59 @@ public class Tasks {
         return res;
     }
     public static boolean  ispunch(String str1, String str2)//38 task
-    {
-        int first=0, second =0;
-        char[] arr1 = str1.toCharArray();
-        char[] arr2 = str2.toCharArray();
-        for (int i = arr1.length-1; i >0 ; i--) {
-            if (arr1[i]==' '&&0!=first) break;
-            if ((arr1[i]=='a')||(arr1[i]=='A')||(arr1[i]=='e')||(arr1[i]=='E')||(arr1[i]=='o')||(arr1[i]=='O')||(arr1[i]=='i')||(arr1[i]=='I')||(arr1[i]=='u')||(arr1[i]=='U')||(arr1[i]=='y')||(arr1[i]=='Y')) first++;
+    {////////////////////тут проверяется количество гласных, а не то одинаковы они или нет, попробуй сдать так, я неверно посомтрел условие изначально
+        int first=0, second =0;//счётчики гласных в 1 и 2 слове
+        str1 = str1.trim();//убираем пробелы в начале и конце строки
+        str2 = str2.trim();
+        String wovels = "aeoiuyAEOIUY";
+        //char[] arr1 = str1.toCharArray();//убрать
+        //char[] arr2 = str2.toCharArray();//убрать
+        for (int i = str1.length()-1; i >0 ; i--) {//с конца строки
+            if (str1.charAt(i)==' '&&0!=first) break;//если проверили первое слово, дальше проверять не нужно
+            for (int j = 0; j < wovels.length(); j++) {
+                if (str1.charAt(i)==wovels.charAt(j))first++;
+            }
+            //if ((arr1[i]=='a')||(arr1[i]=='A')||(arr1[i]=='e')||(arr1[i]=='E')||(arr1[i]=='o')||(arr1[i]=='O')||(arr1[i]=='i')||(arr1[i]=='I')||(arr1[i]=='u')||(arr1[i]=='U')||(arr1[i]=='y')||(arr1[i]=='Y')) first++;
         }
-        for (int i = arr2.length-1; i >0 ; i--) {
-            if (arr2[i]==' '&&0!=second) break;
-            if ((arr2[i]=='a')||(arr2[i]=='A')||(arr2[i]=='e')||(arr2[i]=='E')||(arr2[i]=='o')||(arr2[i]=='O')||(arr2[i]=='i')||(arr2[i]=='I')||(arr2[i]=='u')||(arr2[i]=='U')||(arr2[i]=='y')||(arr2[i]=='Y')) second++;
+        for (int i = str2.length()-1; i >0 ; i--) {
+            if (str2.charAt(i)==' '&&0!=second) break;
+            for (int j = 0; j < wovels.length(); j++) {
+                if (str2.charAt(i)==wovels.charAt(j))second++;
+            }
+            //if ((arr2[i]=='a')||(arr2[i]=='A')||(arr2[i]=='e')||(arr2[i]=='E')||(arr2[i]=='o')||(arr2[i]=='O')||(arr2[i]=='i')||(arr2[i]=='I')||(arr2[i]=='u')||(arr2[i]=='U')||(arr2[i]=='y')||(arr2[i]=='Y')) second++;
         }
         if (first==second) return true;
         else return false;
     }
     public static boolean  repeater(int val1, int val2)//39 task
     {
-        char first = '.';
-        char[] arr1= (""+val1).toCharArray();
-        char[] arr2= (""+val2).toCharArray();
-        for (int i = 0; i < arr1.length-2; i++) {
-            if ((arr1[i]==arr1[i+1])&&(arr1[i+2]==arr1[i]))
+        char first = '.';//для повторябщегося числа в 1 строке, изначально тут . чтобы был отличный от числа символ
+        String val1s = Integer.toString(val1);
+        String val2s = Integer.toString(val2);
+        //char[] arr1= Integer.toCharArray(val1);//
+        //char[] arr2= (""+val2).toCharArray();
+        for (int i = 0; i < val1s.length()-2; i++) {//для всех чисел в 1 строке кроме 2х последних
+            if ((val1s.charAt(i)==val1s.charAt(i+1))&&(val1s.charAt(i+2)==val1s.charAt(i)))//если 3 подряд совпадают
             {
-                first =arr1[i];
+                first =val1s.charAt(i);//совпадающее число в фист
                 break;
             }
         }
-        for (int i = 0; i < arr2.length-1; i++) {
-            if ((arr2[i]==first)&&(arr2[i+1]==first)) return true;
+        for (int i = 0; i < val2s.length()-1; i++) {//для всех чисел во 2 строке кроме последнего
+            if ((val2s.charAt(i)==first)&&val2s.charAt(i+1)==first) return true;//если во второй строке встречается 2 поряд совпадающих чисел, что и в первой совпадающих 3 раза
         }
-      return false;
+      return false;//в остальных случаях
     }
     public static int  books(String str, char ch)//40 task
     {
         int unic = 0, res = 0, chars = 0;
-        char[] arr = str.toCharArray();
+        //char[] arr = str.toCharArray();
         char temp;
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] == ch) {
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) == ch) {
                 chars = 0;
                 int k = i + 1;
-                while (arr[k] != ch) {
+                while (str.charAt(k) != ch) {
                     chars++;
                     k++;
                 }
@@ -692,10 +702,10 @@ public class Tasks {
                 for (int j = 0; j < chars; j++)
                 {
                     k = i + 1+ j;
-                    temp = arr[k];
-                    while (arr[k] != ch)
+                    temp = str.charAt(k);
+                    while (str.charAt(k) != ch)
                     {
-                        if (temp == arr[k + 1])
+                        if (temp == str.charAt(k+1))
                         {
                             unic++;
                         }
